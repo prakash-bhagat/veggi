@@ -1,0 +1,28 @@
+<div class="example-container">
+    <div class="row d-flex justify-content-center">
+        <form [formGroup]="login" (ngSubmit)="onLogin()">
+    <mat-form-field appearance="fill" class="d-flex justify-content-center">
+      <mat-label>Enter your mobile</mat-label>
+      <input matInput placeholder="0123456789" name="mobile" formControlName="mobile" required>
+      <button mat-icon-button matSuffix >
+        <mat-icon>perm_identity</mat-icon>
+    </button>
+      <!-- <mat-error *ngIf="mobile.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password" required placeholder="********">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <!-- <mat-error *ngIf="password.invalid">{{errorPassword()}}</mat-error> -->
+        </button>
+      </mat-form-field>
+   
+    <div class="d-flex justify-content-center mb">
+        <button mat-raised-button color="primary">Login</button>
+    </div>
+</form>
+<!-- {{message}} (click)="status()" -->
+    </div>
+  </div>
+  

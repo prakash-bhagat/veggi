@@ -1,0 +1,31 @@
+<div class="container">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "false"></ngx-spinner>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Payment</th>
+          <th scope="col">Employee Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of datasource | paginate: { itemsPerPage: 10, currentPage: p };">
+          <th scope="row">{{p.order_id}}</th>
+          <td [style.color]="p.payment ? 'green' : 'red'">
+          {{p.payment == null ? return : p.payment}}
+        </td>
+          <td [style.color]="p.notes ? 'green' : 'red'">
+          {{p.notes == "" || p.notes == null ? employeeorder : p.notes}}
+        </td>
+        </tr>
+      </tbody>
+    </table>
+        <!-- pagination -->
+        <div class="d-flex justify-content-center" style="margin: 5em;">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <!-- pagination -->
+        <hr class="my-4">
+
+    </div>

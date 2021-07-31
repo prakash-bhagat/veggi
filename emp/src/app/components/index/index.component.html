@@ -1,0 +1,60 @@
+<div class="container my-5">
+    <div class="row">
+      <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-scale-multiple">
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+      <div class="col-12 d-flex justify-content-end">
+        <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
+      </div>
+<br><br>
+<hr>
+<p class="col-12 mt-2">
+  <mark>If item delivered and not removed from page please use refresh button</mark>
+</p>
+      
+    
+      <div class="col mt-2">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Society</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <mat-accordion *ngFor="let p of chk">
+                          <mat-expansion-panel (opened)="panelOpenState = true"
+                                               (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                               <mat-panel-title>
+                                {{p.society_name}}
+                              </mat-panel-title> 
+                              <mat-panel-description>
+                               {{p.address}} <!-- Click to expand/collapse -->
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <p>Order Id : {{p.id}}</p>
+                            <p>Contact : {{p.mobile}}</p>
+							<p>Address : {{p.address}}</p>
+                            <!-- <p>Items : {{p.products}}</p> -->
+                            <!-- <p>Total : {{p.price | currency:'INR'}}</p> -->
+                           <!-- <p>Quantity : {{p.quantityOrdered}}</p>-->
+                            <p><button mat-raised-button color="primary"  routerLink="/employee/delivery/{{p.id}}">Proceed To Deliver</button></p>
+                            <!-- <p><button class="btn btn-sm btn-success" routerLink="employee/delivery">Deliver</button></p> -->
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                        <!-- <td>
+                            <button class="btn btn-sm btn-success" routerLink="employee/delivery">Deliver</button>
+                          </td> -->
+                    </tr>
+              </table>
+          </div>
+      </div>
+    </div>
+  </div>
+  

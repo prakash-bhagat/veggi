@@ -1,0 +1,39 @@
+<div class="container">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "false"></ngx-spinner>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Address</th>
+      <th scope="col">Society</th>
+      <th scope="col">Joined on</th>
+      <th scope="col" class="text-center">Operation</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let p of datasource | paginate: { itemsPerPage: 10, currentPage: p };">
+    <tr>
+      <th scope="row">{{p.id}}</th>
+      <td>{{p.name}}</td>
+      <td>{{p.mobile}}</td>
+      <td>{{p.address}}</td>
+      <td>{{p.society}}</td>
+      <td>{{p.date | date :'dd-MMM-yy h:mm:ss a'}}</td>
+      <td>
+        <button mat-raised-button color="warn" type="button" (click)="delete(p)">Delete</button>
+      </td>
+      <!-- <td><input type="button" value="Update"></td> -->
+    </tr>
+  </tbody>
+</table>
+
+        <!-- pagination -->
+        <div class="d-flex justify-content-center" style="margin: 5em;">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <!-- pagination -->
+        <hr class="my-4">
+        
+</div>

@@ -1,0 +1,71 @@
+<div class="container d-flex justify-content-center">
+
+  <div class="text-center my-5" *ngIf="message">
+    <h4>hfdh</h4>
+    <button class="btn btn-primary btn-lg mt-3" routerLink="/home">GO TO SHOP</button>
+  </div>
+
+</div>
+
+  
+  <div class="container" *ngIf="!message">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th>#</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Packet</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+
+          <tbody >
+          <tr *ngFor="let c of cart; let i=index">
+            <td>
+              <span class="text-danger mr-md-2" style="cursor: pointer;"><i class="fa fa-trash" (click)="delete(c)"></i></span>
+            </td>
+            <td>
+              <img src="{{apiUrl}}{{c.image}}" alt="{{c.name}}" height="60" class="order-1">
+            </td>
+            <td>{{c.name}}</td>
+            <td>{{c.price | currency:'INR'}}</td>
+            <td><div>{{c.packet > 999 ? prod : c.packet}} {{c.packet > 999 ? "kg" : c.weight}}</div></td>
+            <td>
+              <form class="d-flex justify-content-center text-center">
+                <div class="value-button mt-1" id="decrease" min="1" (click)="minus(c,$event)">
+                  <i class="fa fa-minus"></i>
+                </div>
+                <input type="number" id="number"  [value]="c.quantity" readonly [max]="c.quantity" />
+                <div class="value-button mt-1" id="increase" (click)="plus(c,$event)">
+                  <i class="fa fa-plus"></i>
+                </div>
+              </form>
+            </td>
+            <td>
+              <div>{{c.quantity * c.price | currency:'INR'}}</div>
+              <!-- <div>{{subtotal | currency:'INR'}}</div> -->
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="font-weight-bold" colspan="5" style="text-align: end;">TOTAL</td>
+            <td>{{sum | currency:'INR'}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-12 d-flex mb-5">
+        <div class="d-flex justify-content-between flex-sm-column flex-md-row w-100">
+          <a (click)="checkout(cart)" class="btn btn-danger btn-sm order-1">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+          <a routerLink="/home" class="btn btn-success btn-sm order-0"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</a>
+        </div>
+      </div>
+
+    </div>
+  </div>

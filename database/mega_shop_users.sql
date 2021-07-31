@@ -1,0 +1,71 @@
+-- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+--
+-- Host: homease.cg5idmygnvsl.ap-south-1.rds.amazonaws.com    Database: mega_shop
+-- ------------------------------------------------------
+-- Server version	8.0.20
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '';
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `address` longtext,
+  `society` int DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `age` int DEFAULT '18',
+  `role` int DEFAULT '555',
+  `type` varchar(255) NOT NULL DEFAULT 'local',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`,`mobile`),
+  KEY `fk_users_society` (`society`),
+  CONSTRAINT `fk_users_society` FOREIGN KEY (`society`) REFERENCES `society` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (148,'Test','1234567890','A 11',7,'$2b$10$pwFyb2021d5yXa3JR7KDL.PGn9ducXzOEqqtP/tx6Ei7.rC1X4P8y','fmdP8PpeSDiWF3MRB379dE:APA91bHeB9cdGPQ1z0MdY6A4PsmrZvlXq5PLosYtxDyUK9X6LiD1oVvtufcQ0gQ7fiHADvtA7eVL0snIvhUNWknOPZdZf_3Nut5xPVNBUXudL8MqUs10zZBs5s1AJYJMS5brhr2NIAqB',18,555,'local','2021-03-03 14:05:18'),(149,'Test1','1234567891','T 11',4,'$2b$10$8dRic5kHxAPHLrTbtKQhMO9ZkKc4f5KLDYSN8m7CSXPwr16v5VfYy','dyM06pZySz-XNTg0Xn36X1:APA91bFni20gNtNRsFIKue-VSqd_36bOeOxQXrgI98SlYcVJnTIq9ZCcTLRmzLBLwSEa0hfnAcqkPvW0ZBztfs-i75mDtnEo0__GN8lpha9wnmKIFXfzHP07XsVFnOpiW94F7V5-_NdX',18,555,'local','2021-03-03 14:05:18'),(150,'test2','1234567892','T 22',3,'$2b$10$NSaGDJTk4RWBKN6ZMeH9../3ArItSb87GpyBdZWp4BO4/DY8aTKZm','cXYknANFRCyzsvl5MFExfi:APA91bGTwWKjPMF4AxAlNbUSmKWPP86uH2UpfpYwLUnLPhvfqsMXfoTNr1RSkOHSur2wmeBxgTonRworjRcrGZeLsEdOgNusvF__eiRapk2A-i5SAUQQauFoLDm6HFO0caU2RiA00Ikg',18,555,'local','2021-03-03 14:05:18'),(151,'test3','1234567893','T 33',2,'$2b$10$GJkIAVjhNzGx/m9lJIJEKu1h4OLhvV4yxXoqaZ2JQ6zHCSggNRqxy','faE_Do7dTK-LPQnRcTmpba:APA91bEhJL_wNNJtG0Yoq_JMjOFaJx8vqANTvj4sLJGHJxBuX6p3ZpYwJclHAg9YHQGhKrasGPMDl7vLUj8kNRzIY0diLhIW1ARSrNmEoF40VVSsy1ahEMwwLVJZVCuDnqvS5GsgaMf_',18,555,'local','2021-03-03 14:05:18');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-04-21 13:15:30

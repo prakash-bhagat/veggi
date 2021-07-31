@@ -1,0 +1,193 @@
+<div class="container">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "true"></ngx-spinner>
+
+  <button type="button" mat-raised-button class="float-right mt-2 ml-4 mb-2" color="primary" data-toggle="modal" data-target="#update">Update</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="update" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Insert Product Details</h4>
+          <button type="button" #closebuttonupdate class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="update">
+
+            Select product name
+            <select class="form-control" formControlName="id">
+              <option default>SELECT PRODUCT</option>
+            <option *ngFor="let p of datasource" value="{{p.id}}">{{p.name}}</option>
+          </select><br>
+            Insert new price <br>
+            <input type="number" class="form-control" formControlName="price" name="price" id="" placeholder="New Price"><br>
+            Insert quantity <br>
+            <input type="number" class="form-control" formControlName="quantity" name="quantity" id="" placeholder="New Quantity">
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!update.valid" class="btn btn-danger" id="closeModal"  (click)="onUpdate()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  <!-- Offers Button [formGroup]="update" (ngSubmit)="onUpdate()" -->
+  <button type="button" mat-raised-button class="float-right mt-2 mb-2" color="primary" data-toggle="modal" data-target="#offerUpdate">Offer update</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="offerUpdate" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Insert Product Details</h4>
+          <button type="button" #closebuttonoffer class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="offerUpdate">
+
+             Select product name
+            <select class="form-control" formControlName="id">
+              <option default>SELECT PRODUCT</option>
+            <option *ngFor="let p of datasource" value="{{p.id}}">{{p.name}}</option>
+          </select><br>
+            Insert new price <br>
+            <input type="number" class="form-control" formControlName="offerPrice" name="price" id="" placeholder="New Price"><br>
+            Insert old price <br>
+            <input type="number" class="form-control" formControlName="price" placeholder="old Price">
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!offerUpdate.valid" class="btn btn-danger" id="closeModal"  (click)="onOfferUpdate()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  <!-- Offer Button End -->
+
+  <!-- stock -->
+
+
+<button type="button" mat-raised-button class="float-right mt-2 mr-4 mb-2" color="primary" data-toggle="modal" data-target="#inStock">In of stock</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="inStock" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Select Product Details</h4>
+          <button type="button" #closebuttonin class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="instock">
+
+            Select product name
+            <select class="form-control" id="exampleFormControlSelect1" formControlName="id">
+              <option default>SELECT PRODUCT</option>
+            <option *ngFor="let p of datasource" value="{{p.id}}">{{p.name}}</option>
+          </select>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!instock.valid" class="btn btn-danger" id="closeModal"  (click)="inStock()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  <!-- In stock end -->
+  <!-- out stock -->
+  <button type="button" mat-raised-button class="float-right mt-2 mr-4 mb-2" color="primary" data-toggle="modal" data-target="#outStock">Out of stock</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="outStock" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Select Product Details</h4>
+          <button type="button" #closebuttonout class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="outstock">
+
+            Select product name
+            <select class="form-control" id="exampleFormControlSelect1" formControlName="id">
+              <option default>SELECT PRODUCT</option>
+            <option *ngFor="let p of datasource" value="{{p.id}}">{{p.name}}</option>
+          </select>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!outstock.valid" class="btn btn-danger" id="closeModal"  (click)="outStock()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  <!-- stock end -->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Old Price</th>
+      <th scope="col">Packet/Weight</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Categories</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Operation</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let p of datasource | paginate: { itemsPerPage: 5, currentPage: p };let i of prod">
+    <tr>
+      <th scope="row">{{p.id}}</th>
+      <td>{{p.name}}</td>
+      <td><img src="{{image}}{{p.image}}" alt="no image" width="200px"></td>
+      <td>{{p.price}}</td>
+      <td>{{p.offerPrice}}</td>
+      <td>{{p.packet > 999 ? (i.packet/1000) : p.packet}} {{p.packet > 999 ? "kg" : p.weight}}</td>
+      <td>{{p.quantity}}</td>
+      <td>{{p.category}}</td>
+      <td *ngIf="p.stock_flag == 1">
+        <div class="example-button-row">
+      <button mat-stroked-button color="primary" style="color: red;">Out of stock</button>
+      </div>
+  </td>
+    <td *ngIf="p.stock_flag == 0">
+      <div class="example-button-row">
+          <button mat-stroked-button color="primary" style="color: green;">In stock</button>
+          </div>
+      </td>
+      <td>
+        <button mat-raised-button color="warn" type="button" (click)="delete(p)">Delete</button>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+        <!-- pagination -->
+        <div class="d-flex justify-content-center" style="margin: 5em;">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <!-- pagination -->
+        <hr class="my-4">
+
+</div>

@@ -1,0 +1,10 @@
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .dropdown-toggle:before{
+    content: none;
+  }
+  img{
+    height: 118px;
+  }

@@ -1,0 +1,38 @@
+<div class="container">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "false"></ngx-spinner>
+
+    <!-- <button mat-raised-button color="primary" type="button" (click)="onAssign()">Assign</button> -->
+    <!-- <form> -->
+      <!-- <div class="row"> -->
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col">Order Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+             <th scope="col">Society</th>
+             <th scope="col">Delivered Time</th>
+              <th scope="col">Operations</th>
+            </tr>
+          </thead>
+          <!-- <h1>{{message}}</h1> -->
+          <tbody *ngFor="let p of datasource | paginate: { itemsPerPage: 10, currentPage: p };">
+            <tr>
+              <th scope="row">{{p.id}}</th>
+              <td>{{p.name}}</td>
+              <td>{{p.address}}</td>
+             <td>{{p.society_name}}</td>
+             <td>{{p.orderDeliverTime | date :'dd-MMM-yy h:mm:ss a'}}</td>
+              <td>
+                <button class="mr-2" mat-raised-button color="primary" type="button"  routerLink="/finalinvoice/{{p.id}}">Print</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- pagination -->
+      <div class="d-flex justify-content-center" style="margin: 5em;">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+      <!-- pagination -->
+      <hr class="my-4">
+  </div>

@@ -1,0 +1,93 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "true"></ngx-spinner>
+  <div class="float-right mt-2 mb-2">
+    <button type="button" mat-raised-button class="float-right mt-2 ml-4 mr-2 mb-2" color="primary" data-toggle="modal" data-target="#photoimage">Upload image</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="photoimage" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Select image</h4>
+          <button type="button" #closebuttonphotoimage class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="photoimage">
+           <div class="form-group">
+                Choose image to upload for notification <br>
+                <input type="file" name="image" formControlName="image" (change)="selectImage($event)" placeholder="Image" class="form-control-file">
+              </div>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!photoimage.valid" class="btn btn-danger" id="closeModal"  (click)="photo()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="float-right mt-2 mr-2">
+    <button type="button" mat-raised-button class="float-right mt-2 ml-4 mb-2" color="primary" data-toggle="modal" data-target="#addOffer">Place offer</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addOffer" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title">Insert name and select image</h4>
+          <button type="button" #closebuttonaddOffer class="close" data-dismiss="modal">&times;</button>
+         
+        </div>
+        <div class="modal-body justify-content-center">
+            <form [formGroup]="addOffer">
+                <div class="form-group">
+                Type offer title <br>
+                <input type="text" name="title" formControlName="title" class="form-control" placeholder="Offer name">
+              </div>
+              <div class="form-group">
+                Type offer body <br>
+                <input type="text" name="body" formControlName="body" class="form-control" placeholder="Offer name">
+              </div>
+              <div class="form-group">
+                Select image link
+                <select formControlName="imageName" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                  <option default> SELECT IMAGE</option>
+                  <option *ngFor="let p of nameImage" value="{{p.image}}">{{p.image}}</option>
+                </select>
+              </div>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" [disabled]="!addOffer.valid" class="btn btn-danger" id="closeModal"  (click)="onSubmit()">submit</button>
+         </div> 
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Fetched Image -->
+  <table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">S.no</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Operation</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let p of nameImage;let i=index">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{p.image}}</td>
+        <td><img src="{{p.image}}" alt="No image" height="200px"></td>
+        <td>
+          <button mat-raised-button color="warn" type="button" (click)="delete(p)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

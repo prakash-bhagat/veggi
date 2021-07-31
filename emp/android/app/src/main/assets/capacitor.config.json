@@ -1,0 +1,16 @@
+{
+  "appId": "com.employee.app",
+  "appName": "employee",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/employee",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "PushNotifications": {
+    "presentationOptions": ["badge", "sound", "alert"]
+  },
+  "cordova": {}
+}

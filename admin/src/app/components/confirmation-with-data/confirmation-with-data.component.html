@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Confirm</h1>
+
+<mat-form-field appearance="fill">
+  <mat-select>
+    <mat-option *ngFor="let l of list" [value]="l.id">
+      {{l.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<!-- <div mat-dialog-content>{{confirmMessage}}</div> -->
+<div mat-dialog-actions class="d-flex justify-content-between mt-2">
+  <button mat-raised-button style="color: #fff;background-color: #153961;" (click)="dialogRef.close(true)">Confirm</button>
+  <button mat-raised-button (click)="dialogRef.close(false)">Cancel</button>
+</div>

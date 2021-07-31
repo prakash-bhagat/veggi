@@ -1,0 +1,68 @@
+  <div class="container">
+    <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: ghostwhite">Loading...</p>
+</ngx-spinner>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Order Id</th>
+              <!-- <th scope="col">Address</th>
+              <th scope="col">Products</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Status</th>
+              <th scope="col">Operation</th> -->
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+    <mat-accordion *ngFor="let p of test">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{p.id}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Click to expand/collapse
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <!-- <p>Items : {{p.products}}</p>
+        <p>total : {{p.total | currency:'INR'}}</p>
+        <p>Quantity : {{p.quantityOrdered}}</p> -->
+        <p><button mat-raised-button color="primary"  routerLink="/viewInvoice/{{p.id}}">View Invoice</button></p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </tr>
+</table>
+</div>
+  <!-- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="quantityOrdered">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantityOrdered}}</td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+      <td mat-cell *matCellDef="let element"> {{element.price | currency:'INR'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Items </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+</div>
+
+

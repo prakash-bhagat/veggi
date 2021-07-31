@@ -1,0 +1,70 @@
+<div class="">
+    <p class="text-center">ADD DAIRY</p>
+    <form class="mt-5" [formGroup]="addDairy" (ngSubmit)="onSubmit()">
+      <div class="row d-flex justify-content-center">
+        <div class="col col-md-6">
+		Name
+          <input type="text" name="title" formControlName="title" class="form-control" placeholder="Name">
+        </div>
+      </div><br>
+      <div class="row d-flex justify-content-center">
+        <div class="col col-md-6">
+		Select image
+          <input type="file" name="image" formControlName="image" (change)="selectImage($event)" class="form-control" placeholder="Image">
+        </div>
+      </div><br>
+      <div class="row d-flex justify-content-center">
+          <div class="col col-md-6">
+		  Insert price
+            <input type="number" name="price" formControlName="price" class="form-control" placeholder="Price">
+          </div>
+        </div><br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col col-md-6">
+		  Select weight type
+            <div class="input-group">
+              <select formControlName="type_id" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option value ="" selected disabled>Choose...</option>
+                <option value="1">Dozen</option>
+                <option value="2">Gram</option>
+                <option value="3">Piece</option>
+              </select>
+            </div>
+          </div>
+        </div><br>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col col-md-6">
+		  Select packet
+            <div class="input-group">
+              <select formControlName="packet" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                <option value="none" selected disabled>Choose...</option>
+                <!-- <option value="12">12</option> -->
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
+                <option value="750">750</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+                <option value="3000">3000</option>
+                <option value="4000">4000</option>
+                <option value="5000">5000</option>
+              </select>
+            </div>
+          </div>
+        </div><br>
+        <div class="row d-flex justify-content-center">
+          <div class="col col-md-6">
+		  Insert quantity
+            <input type="number" name="quantity" formControlName="quantity" class="form-control" placeholder="Quantity">
+          </div>
+        </div><br>
+        <div class="row d-flex justify-content-center">
+          <div class="col col-md-6">
+            <button type="submit" [disabled]="!addDairy.valid" mat-raised-button color="primary" value="Add Fruit">Add Dairy</button>
+          </div>
+        </div>
+    </form>
+  </div>

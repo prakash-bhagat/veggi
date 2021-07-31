@@ -1,0 +1,10 @@
+// .card-body{
+//     background-image: url("/assets/img/invoiceimg.png");
+//     background-size: cover;
+// }
+@media print {
+    #printPageButton {
+      display: none;
+      visibility: hidden;
+    }
+  }

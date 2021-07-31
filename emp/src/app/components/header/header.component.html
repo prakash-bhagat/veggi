@@ -1,0 +1,12 @@
+  <div class="container">
+  <nav class="navbar navbar-light d-flex justify-content-between">
+    <a class="navbar-brand">Homease</a>
+      <!-- <button mat-icon-button class="example-icon favorite-icon" routerLink="/" aria-label="Example icon-button with heart icon">
+        <mat-icon>perm_identity</mat-icon>
+      </button> -->
+      <button mat-button class="example-icon favorite-icon" [matMenuTriggerFor]="menu"><mat-icon>perm_identity</mat-icon></button>
+  </nav>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">Logout<mat-icon>login</mat-icon></button>
+  </mat-menu>
+</div>

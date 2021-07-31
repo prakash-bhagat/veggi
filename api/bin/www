@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+const app = require('../app');
+//const debug = require('debug')('mega-back:server');
+//const http = require('http');
+
+//const express = require('express')
+//const app = express()
+ 
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+ 
+app.listen(5000)
+
+console.log("listen:5000");

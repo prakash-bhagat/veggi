@@ -1,0 +1,125 @@
+    <div class="container my-4 mr-2 ml-2" style="width: 80%;">
+      <!-- back refresh -->
+      <div class="mb-4 ">
+          <button mat-flat-button color="warn" (click)="back()">
+            <mat-icon>keyboard_backspace</mat-icon>
+          </button>
+      </div>
+<!-- back refresh -->
+
+        <div class="row">
+          <div class="col-12">
+            <ngx-spinner
+            bdColor="rgba(51,51,51,0.8)"
+            size="medium"
+            color="#fff"
+            type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Loading...</p>
+          </ngx-spinner>
+          </div>
+
+<!-- form -->
+<!-- <div class="col-md-12"> -->
+  <form role="form" [formGroup]="deliveryForm">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" formControlName="name" placeholder="John Doe" id="name" type="text" readonly>
+    </div> <!-- form-group ends here -->
+
+
+    <div class="form-group">
+        <label for="contact">Contact </label>
+        <input class="form-control" formControlName="mobile" placeholder="089444052" id="contact" type="number" readonly>
+    </div> <!-- form-group ends here -->
+
+
+
+    <div class="form-group">
+        <label for="address"> Address</label>
+        <input class="form-control" formControlName="address" placeholder="B-22 Atrium Building, Block 3" id="address"
+            type="text" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="orderId">Order Id</label>
+        <input class="form-control" formControlName="id" placeholder="AXT222" id="orderId" type="text" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="total">Total</label>
+        <div><span>{{sum | currency:'INR'}}</span></div>
+        <!-- <input class="form-control" placeholder="999" id="total" type="number" [value]="sum | currency:'INR'" readonly> -->
+    </div>
+
+    <div class="form-group">
+        <label for="payment">Payment</label>
+        <select class="form-control" id="payment" formControlName="payment">            
+     <option value="Cash" selected>Cash</option>
+            <option value="Googlepay">Google Pay</option>
+            <option value="Phonepe">PhonePe</option>
+            <option value="paytm">Paytm</option>
+        </select>
+    </div><!-- form-group ends here -->
+    <div class="row">   
+        <div class="col-4">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Approve</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Sub Total</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let p of chk;let i of prod;">
+                  <tr>
+                    <!-- <th scope="row">{{i}}</th> -->
+                    <td><input type="checkbox" [checked]="p.c" (change)="onChecked(p,$event)"></td>
+                    <td>{{p.products}}</td>
+                    <td>{{p.quantityOrdered}}</td>
+                    <td>{{p.packet > 999 ? (i.packet/1000) : p.packet}} {{p.packet > 999 ? "kg" : p.type}}</td>
+                    <td>{{p.quantityOrdered * p.price | currency:'INR'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-6">
+
+          <div class="form-group">
+              <label for="comments">Notes</label>
+              <textarea  name="employee_notes" formControlName="employee_notes" id="" cols="20" rows="5"></textarea>
+          </div>
+      </div>
+  </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <div *ngIf="list.length >= 1; else elseBlock">
+            <button  [disabled]="!deliveryForm.valid" type="button" class="btn btn-primary btn-lg btn-block" (click)="onSubmit()">
+                Submit
+            </button>
+          </div>
+            <ng-template #elseBlock>
+              <button  type="button" [disabled]="!deliveryForm.valid" (click)="return()"  class="btn btn-primary btn-lg btn-block">
+                Return
+            </button>
+            </ng-template>
+             <br>
+            
+        </div> <!--[disabled]="!deliveryForm.valid" col-12 ends here row ends here-->
+    </div> 
+
+</form>
+<!-- </div> -->
+<!-- form -->
+      
+ <!-- <div class="row"> -->
+            
+
+        </div>
+    </div>

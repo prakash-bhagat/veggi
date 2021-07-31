@@ -1,0 +1,11 @@
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let c of carouselImage">
+      <div class="picsum-img-wrapper">
+        <img src="{{carouselURL}}{{c.image}}" alt="Error Fetching Image">
+      </div>
+      <div class="carousel-caption">
+        <!-- <h3>10 seconds between slides...</h3>
+        <p>This carousel uses customized default values.</p> -->
+      </div>
+    </ng-template>
+  </ngb-carousel>

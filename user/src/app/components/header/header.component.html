@@ -1,0 +1,73 @@
+<!-- HEADER -->
+<header>
+  <!-- TOP HEADER -->
+  <div id="top1-header" class="navbar navbar-dark bg-dark">
+    <div class="container" style="color: ghostwhite;">
+      <ul class="header-links pull-left">
+        <li><i class="fa fa-phone"></i>+91 8529141043</li>
+        <li><i class="fa fa-envelope-o"></i> pranjalujlakalki@gmail.com</li>
+        <li><i class="fa fa-map-marker"></i> Shop 3 mittal college road</li>
+      </ul>
+      <ul class="header-links pull-right">
+        <!-- <li><a routerLink="/profile"><i class="fa fa-sign-in"></i> {{authState === false ? 'LOGIN' : 'My Account'}}</a></li> -->
+        <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fa fa-sign-in"></i>{{'LOGIN'}}</a></li>
+        <li *ngIf="isLoggedIn"  (click)="logout()"><a routerLink="/default"><i class="fa fa-sign-out"></i>{{'LOGOUT'}}</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="/register"><i class="fa fa-user-plus"></i> REGISTER</a></li>
+        <!-- <li><a href="/test/admin" *ngIf="authState"><i class="fa fa-user-plus"></i> ADMIN</a></li> -->
+      </ul>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-dark bg-dark w-100">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/default">Homease <br><label class="font-italic" style="font-size: x-small;">Your Veggie Buddy</label></a>
+    <form class="form-inline">
+      
+          <div class="header-ctn">
+          <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-shopping-cart"></i>
+    <span>Your Cart</span>
+              <div class="qty">{{cart !== null ? cart.length : "0"}}</div>
+  </a>
+
+  <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> -->
+    <div class="cart-dropdown dropdown-menu dropdown-menu-right" style="background-color: snow;width: 200px;border: snow;">
+      <div class="cart-list" >
+        <div class="product-widget" *ngFor="let c of cart; let i=index">
+          <div class="product-img">
+            <img src="{{apiUrl}}{{c.image}}" alt="Error" width="20px">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name"><a href="#">{{c.name}}</a></h3>
+            <h4 class="product-price"><span class="qty">{{c.quantity}} x </span> {{c.price | currency:'INR'}} </h4>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <small>{{cart !== null ? cart.length : "0"}} Item(s) selected</small>
+        <!-- <h5>TOTAL: {{sum | currency:'INR'}}</h5> -->
+      </div>
+      <div class="d-flex justify-content-center">
+        <button mat-raised-button color="warn" (click)="viewCart()">View Cart</button>
+        <!-- <a routerLink="/cart">View Cart</a> -->
+      </div>
+    </div>
+  <!-- </div> -->
+</div>
+        </div>
+    </form>
+  </div>
+  </nav>
+    <nav class="navbar">
+      <div class="container" style="background-color: ghostwhite;">
+       <a routerLink="/" routerLinkActive="active-link" mat-button>Home</a>
+        <a routerLink="/home" routerLinkActive="active-link" mat-button>Shop</a>
+        <a routerLink="/profile" routerLinkActive="active-link" mat-button>Profile</a>
+        <a routerLink="/orderHistory" routerLinkActive="active-link" mat-button>History</a>
+        </div>
+      </nav>
+</header>
+<!-- /HEADER -->
+
+

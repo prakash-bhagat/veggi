@@ -1,0 +1,83 @@
+<div class="container">
+<div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding mt-4">
+    <div class="card" id="bill">
+        <div class="card-header p-4">
+            <h2 class="text-center text-uppercase font-weight-bold">Homease
+                <br><label class="font-italic" style="font-size: x-small;">Your Veggie Buddy</label>
+            </h2>
+            <div class="float-right">
+                <h4 class="mb-0">Order No: #{{id}}</h4>
+                Date: {{date | date :'dd-MMM-yy h:mm:ss a'}}
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- <img src="/assets/img/invoiceBack.png" style="opacity: 0.3;" alt=""> -->
+            <div class="row mb-4">
+                <div class="col-sm-6 d-flex justify-content-start">
+                    <div>
+                    <h5 class="mb-3">From:</h5>
+                    <h3 class="text-dark mb-1">Homease</h3>
+                    <!-- <div>Bhopal,</div> -->
+                    <div>Shop 3 mittal college road</div>
+                    <div>Email: pranjalujlakalki@gmail.com</div>
+                    <div>Phone: +91 8529141043</div>
+                </div>
+                </div>
+                <div class="col-sm-6 d-flex justify-content-end">
+                    <div>
+                    <h5 class="mb-3">To:</h5>
+                    <h3 class="text-dark mb-1">{{name}}</h3>
+                    <div>{{society_name}}</div>
+                    <div>{{address}}</div>
+                    <!-- <div>Chandni chowk, New delhi, 110006</div> -->
+                    <!-- <div>Email: info@tikon.com</div> -->
+                    <div>Phone: +91 {{mobile}}</div>
+                </div>
+                </div>
+            </div>
+            <div class="table-responsive-sm">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="center">#</th>
+                            <th>Products</th>
+                            <th class="right">Price</th>
+                            <th class="center">Quantity</th>
+                            <th class="right">Sub Total</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let d of chk;let i=index">
+                        <tr>
+                            <td class="center">{{i+1}}</td>
+                            <td class="left strong">{{d.products}}</td>
+                            <td class="right">{{d.price | currency:'INR'}}</td>
+                            <td class="center">{{d.quantityOrdered}}</td>
+                            <td class="right">{{d.price * d.quantityOrdered | currency:'INR'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-5">
+                </div>
+                <div class="col-lg-4 col-sm-5 ml-auto">
+                    <table class="table table-clear">
+                        <tbody>
+                            <tr>
+                                <td class="left">
+                                    <strong class="text-dark">Total</strong> </td>
+                                <td class="right">
+                                    <strong class="text-dark">{{sum | currency:'INR'}}</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer bg-white">
+            <p class="mb-0">Homease, Bhopal, Madhya Pradesh, 110034</p>
+        </div>
+    </div>
+</div>
+</div>

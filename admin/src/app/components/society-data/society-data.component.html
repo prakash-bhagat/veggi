@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "false"></ngx-spinner>
+
+      <form class="form-inline" [formGroup]="search" (ngSubmit)="onSearch()">
+        <div class="form-group mb-2 col-6">
+            <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="society">
+                    <option default>SELECT SOCIETY</option>
+                  <option *ngFor="let p of soc" value="{{p.id}}">{{p.society_name}}</option>
+                </select>
+              </div>
+        </div>
+        <button type="submit" class="mb-2" mat-raised-button color="primary">SEARCH</button>
+      </form>
+      <div class="col mt-2">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Customer Orders</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <mat-accordion>
+                          <mat-expansion-panel (opened)="panelOpenState = true"
+                                               (closed)="panelOpenState = false">
+                                            
+                            <mat-expansion-panel-header>
+                               <mat-panel-title class="font-weight-bold">
+                                 <!-- {{p.address}} -->
+                              </mat-panel-title> 
+                              <mat-panel-description class="font-weight-bold">
+                                Click to see details
+                              </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <!-- <div>{{datasource.name}}</div> -->
+                            <!-- table -->
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+                              <!-- Position Column -->
+                              <ng-container matColumnDef="Products">
+                                <th mat-header-cell *matHeaderCellDef class="font-weight-bold"> Products </th>
+                                <td mat-cell *matCellDef="let element"> {{element.products}} </td>
+                              </ng-container>
+                             
+                              <!-- Name Column -->
+                              <ng-container matColumnDef="Quantity">
+                                <th mat-header-cell *matHeaderCellDef class="font-weight-bold"> Quantity </th>
+                                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                              </ng-container>
+                              <!-- <ng-container matColumnDef="Address">
+                                <th mat-header-cell *matHeaderCellDef class="font-weight-bold"> Address </th>
+                                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                              </ng-container> -->
+                            
+                              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            
+                            
+                            <!-- table end -->
+                          </mat-expansion-panel>
+                        </mat-accordion>
+                    </tr>
+              </table>
+          </div>
+      </div>
+</div>

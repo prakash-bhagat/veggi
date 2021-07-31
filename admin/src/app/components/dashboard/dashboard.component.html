@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "timer" [fullScreen] = "false"></ngx-spinner>
+<div class="row d-flex justify-content-between">
+    <div class="row" *ngFor="let p of datasource">
+    <div class="col m-2">
+        <mat-card class="example-card text-center">Today order<br>
+            <span class="">{{p.date}}</span></mat-card>
+    </div>
+  </div>
+  <div class="row" *ngFor="let p of id">
+    <div class="col m-2">
+        <mat-card class="example-card text-center">Total Users<br>
+            <span class="">{{p.id}}</span>
+        </mat-card>
+    </div>
+  </div>
+  <div class="row" *ngFor="let p of emp">
+    <div class="col m-2">
+        <mat-card class="example-card text-center">Total employee <br>
+        <span>{{p.id}}</span></mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m-2">
+        <mat-card class="example-card text-center diffcolor" routerLink="/society">Society Analytics Data<br>
+            <span class="material-icons">touch_app</span></mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m-2">
+        <mat-card class="example-card text-center diffcolor" routerLink="/carousel">Carousel Image</mat-card>
+    </div>
+  </div>
+</div>
+</div>

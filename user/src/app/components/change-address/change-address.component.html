@@ -1,0 +1,22 @@
+<form class="container mt-10" [formGroup]="addressChange" (ngSubmit)="onSubmit()">
+    <div class="alert-success mb-5" role="alert">
+        {{message}}
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            Existing address
+            <input type="text" readonly class="form-control" id="staticEmail" value="{{myUser.address}}">
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-3">
+        <div class="col-md-6">
+            Enter new address
+            <textarea formControlName="address" name="address" class="form-control" type="text" placeholder="Enter New Address"></textarea>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-3">
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-primary" value="Update"  [disabled]="!addressChange.valid"/>
+        </div>
+    </div>
+</form>
