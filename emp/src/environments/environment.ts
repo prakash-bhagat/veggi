@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
  // SERVER_URL : 'http://localhost:5000/api'
-  SERVER_URL : 'http://ec2-65-0-91-147.ap-south-1.compute.amazonaws.com/api',
-  //	IMAGE_URL : 'http://ec2-65-0-91-147.ap-south-1.compute.amazonaws.com/',
+  SERVER_URL : ',
+  //	IMAGE_URL : '',
 };
 
 /*
