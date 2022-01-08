@@ -8,20 +8,20 @@ const bcrypt = require('bcrypt');
 var admin = require('firebase-admin');
 var serviceAccount = {
     "type": "service_account",
-"project_id": "homease-5858",
-"private_key_id": "4c056432a4cc80a865689341d7b7eed227816f13",
-"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC4jcHeca7pT+gd\naTi+VDDpror4wwcUl48l+YAtG/by207OswsR5NWDX0gTqPjPayDqo1oYBocZlcu5\n1OeHY1TdDku4oeA8c0H4GCaoYrRA+P4lL7dxgQQdukKa+jB+3ClOuw3UvNQdUc0a\njYSnudj2gvW1HuCpwYV4/6oATRxlSua3xJpldfDf0EJdcJafYVq81o0yK1V1+z5q\nGzXNIoA103iLTDEz7IvYYFbEbyGi0Zrcwyb2smTzMs9L3Fs6+9okWuVpoYtzBRkj\n2/Go8CFrW1IRkdWue9H6RTay67PwPJLAIyp0EhbWutTwZnqSzEN+g3B1Kx1Cx2Br\ndv6QbSpzAgMBAAECggEAGPcoNjC3wh0Kn8vnnquh8EKpzwwG7ayw8yikw7VoOyMa\nrpB+211S2tItXGd7vQdXbRZK7jwX04i1hf58kY6I4Nx5ttDDFjpbPrX5qMatbqqg\nKqShUqvqxCC5uOBGZirfNaTNMq2Wnh6+OazSOKRF6tb9aRJzvtMMfLlNJHxJ7pOv\npGiYl78ntG9BkxZw6K78PUsqXVqycPKWnZOtQGmiagR3tm2aQgvhvuTkVuJyJrw/\nfqIKMMy9vQ2bPENun8e6Vh9b+Yz4lizCD8Eo81X6ksop01BImQXOGoWXS6CkABPI\nzO/CWNfKoqNFAWqwIQKUZpAFRbbOtZfScV4zGYqW3QKBgQDzDmn/TjmbFUF0AOCv\nE9sTgQWcIYmnDnn+ax40IgV1i9W/siHuKE212mQjQBpskUTw4+EeBKP0djfnHbf2\noBoTUE6V5a4EVxTnxiP4TN9TGsgfINPn77x3Mx/QkTdYwpn7F6VIWeJe2cHjuJqO\nee57Y6okou6mm5vUnwr38gOjDQKBgQDCYccmjUYGP/CYJsQGlUXx3kLAc6GOpqfi\nXGTG/WYaVtxOUDng4I/00t6NpTKtCSn1jvqzO1h578RANmGkZn2ho+9fwsIS3Vqj\nJspGh+MRqQPpvY5bqshU1Z8smrnAlZv7vGZmGxs/Cw1eLRP3bNxMEGIwAcOExrdZ\nHZ37c4ajfwKBgChJmFpALh49nLbMunFquiJ2fWaOzJFLPf9k5AHCLeN5BTocHbGr\nLo5ZH8YUBw092w6Oxy7BmCeaPNPrQiX4Dbpr0krYYkrH4Gg2mJm8rDvLMaavO1Cz\nlSqw57Ibj+//eaR8G+JtO697Kr9DRyMcpOIA+B/QffxRyLeqkRfeHqo1AoGAe1l4\n+ynjKcwhbSwMcPEA9b9JNL8r4k43cxmWif/7bvN30epvEBjwwTefKtuOEOgjzEPz\nKxGZz6crLmRUCfNP/eb93BLG/Rmijq3q5l8M5QQQC5/SWrFBdzQoUjHNdjx6Q4EG\nqfzBiXwF+6E3bmeSVGKBLF2yKOvBJbf5rLte0RkCgYA0bWrzWxT9JqqPVVdipKan\nvd3JH60PF8Yf6mPP5GSlvYe02HdaqLwCOs8TjFhhnnKv/5rMGEPvi1EHZLibfG9l\nMlaqTuJt0iwGj8G/ooTmuMVl3WrDCZ9ysOHzmR96WXUB7dGmLe3TPUo6wCesTWUV\ncktXjthtzwkuNSTg969yiQ==\n-----END PRIVATE KEY-----\n",
-"client_email": "firebase-adminsdk-uxopr@homease-5858.iam.gserviceaccount.com",
-"client_id": "105080402687307657613",
-"auth_uri": "https://accounts.google.com/o/oauth2/auth",
-"token_uri": "https://oauth2.googleapis.com/token",
-"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-uxopr%40homease-5858.iam.gserviceaccount.com"
+"project_id": "",
+"private_key_id": "",
+"private_key": "",
+"client_email": "",
+"client_id": "",
+"auth_uri": "",
+"token_uri": "",
+"auth_provider_x509_cert_url": "",
+"client_x509_cert_url": ""
 };
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: 'https://homease-5858.firebaseio.com'
+    databaseURL: ''
 });
 
 //storage
@@ -541,11 +541,11 @@ router.post('/adminUpdate',(req,res)=>{
     // if (!this.firebaseService) {
         // admin.initializeApp({
         //     credential: admin.credential.cert(serviceAccount),
-        //     databaseURL: 'https://homease-5858.firebaseio.com'
+        //     databaseURL: ''
         // });
         // this.firebaseService = true;
     // }
-    // let testtoken='efhzNZI_Rs-Lu3mRfCHD6L:APA91bGzgsR3Sb4XAKEjaYB0AZQKM3lvbwN9iDTA5DVx_HDh1yCsImLN-OGBMma0XaCNIn5vQvFyGl0R8oTyZR8j3YeWJq7RCx1FLTpqhunV0REFCRaEf9dxyXIOB-gJL0jsNJsY5E43'
+    // let testtoken=''
         var registrationToken = token[0].token;
         // console.log("testToken1",token)
         // console.log("Token at 0:",token[0].token)
